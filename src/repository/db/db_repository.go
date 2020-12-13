@@ -3,13 +3,13 @@ package db
 import (
 	"encoding/csv"
 	"fmt"
-	"golang-bootcamp-2020/utils/constants"
 	"io"
 	"os"
 	"strconv"
 	"strings"
 
 	"golang-bootcamp-2020/domain/model"
+	"golang-bootcamp-2020/utils/constants"
 	_errors "golang-bootcamp-2020/utils/error"
 
 	"github.com/spf13/viper"

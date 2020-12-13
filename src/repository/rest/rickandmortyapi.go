@@ -3,9 +3,9 @@ package rest
 import (
 	"encoding/json"
 	"fmt"
-	"golang-bootcamp-2020/utils/constants"
 
 	"golang-bootcamp-2020/domain/model"
+	"golang-bootcamp-2020/utils/constants"
 	_errors "golang-bootcamp-2020/utils/error"
 
 	"github.com/go-resty/resty/v2"
