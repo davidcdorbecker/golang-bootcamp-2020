@@ -2,6 +2,7 @@ package app
 
 import (
 	"fmt"
+	"golang-bootcamp-2020/utils/constants"
 
 	"golang-bootcamp-2020/controllers"
 	"golang-bootcamp-2020/infrastructure/router"
@@ -29,7 +30,7 @@ func StartApp() {
 
 	restClient := resty.New()
 	//Checking health of API
-	if response, err := restClient.R().Get(viper.GetString("rest.host")); err != nil || !response.IsSuccess() {
+	if response, err := restClient.R().Get(viper.GetString(constants.Host)); err != nil || !response.IsSuccess() {
 		panic("external rest API not available")
 	}
 

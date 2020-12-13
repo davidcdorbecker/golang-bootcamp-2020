@@ -3,6 +3,7 @@ package db
 import (
 	"encoding/csv"
 	"fmt"
+	"golang-bootcamp-2020/utils/constants"
 	"io"
 	"os"
 	"strconv"
@@ -62,7 +63,7 @@ func NewDbRepository() DataBaseRepository {
 
 // CreateCharactersCSV - Make csv file given array of characters
 func (db *dbRepository) CreateCharactersCSV(characters []model.Character) _errors.RestError {
-	file, err := os.Create(viper.GetString("db.charactersPath"))
+	file, err := os.Create(viper.GetString(constants.CharactersPath))
 
 	// ignoring close error it's safe on this point: https://www.joeshaw.org/dont-defer-close-on-writable-files/
 	defer file.Close()
@@ -135,7 +136,7 @@ func (db *dbRepository) GetCharacterIdByName(name string) (string, _errors.RestE
 		return "", _errors.NewInternalServerError(errorDbEmpty)
 	}
 
-	file, err := os.Open(viper.GetString("db.mapPath"))
+	file, err := os.Open(viper.GetString(constants.MapPath))
 	defer file.Close()
 
 	if err != nil {
@@ -164,7 +165,7 @@ func readCharactersFromCSV() bool {
 	// empty map
 	charactersMap = make(map[string]*model.Character)
 
-	file, err := os.Open(viper.GetString("db.charactersPath"))
+	file, err := os.Open(viper.GetString(constants.CharactersPath))
 	defer file.Close()
 
 	if err != nil {
@@ -238,7 +239,7 @@ func parseCharacter(record []string) {
 }
 
 func createMapTable() _errors.RestError {
-	file, err := os.Create(viper.GetString("db.mapPath"))
+	file, err := os.Create(viper.GetString(constants.MapPath))
 	if err != nil {
 		return _errors.NewInternalServerError(errorWritingFile)
 	}

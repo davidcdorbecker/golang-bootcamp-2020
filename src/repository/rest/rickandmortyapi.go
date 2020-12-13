@@ -3,6 +3,7 @@ package rest
 import (
 	"encoding/json"
 	"fmt"
+	"golang-bootcamp-2020/utils/constants"
 
 	"golang-bootcamp-2020/domain/model"
 	_errors "golang-bootcamp-2020/utils/error"
@@ -35,7 +36,7 @@ type RickAndMortyAPIRepository interface {
 
 //Init - init repo data
 func Init() {
-	apiCharacters = viper.GetString("rest.host") + "character/"
+	apiCharacters = viper.GetString(constants.Host) + "character/"
 }
 
 //NewRickAndMortyAPIRepository - Return new rest repository
@@ -71,7 +72,7 @@ func (api *rickAndMortyAPI) processRequest(endpoint string, maxPages int) ([][]b
 	count := 1
 
 	if maxPages == 0 {
-		maxPages = viper.GetInt("rest.maxPagesByDefault")
+		maxPages = viper.GetInt(constants.MaxPagesByDefault)
 	}
 
 	for {

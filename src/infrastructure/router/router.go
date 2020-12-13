@@ -2,6 +2,7 @@ package router
 
 import (
 	"golang-bootcamp-2020/controllers"
+	"golang-bootcamp-2020/utils/constants"
 
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
@@ -21,5 +22,5 @@ func StartRouter(c controllers.AppController) error {
 	router.GET("api/characters", c.GetCharacters)
 	router.GET("api/findId/:name", c.GetCharacterIdByName)
 
-	return router.Run(viper.GetString("app.port"))
+	return router.Run(viper.GetString(constants.Port))
 }
