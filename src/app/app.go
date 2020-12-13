@@ -29,7 +29,7 @@ func StartApp() {
 
 	restClient := resty.New()
 	//Checking health of API
-	if response, err := restClient.R().Get(viper.GetString("rest.host")); err != nil || response.IsSuccess() {
+	if response, err := restClient.R().Get(viper.GetString("rest.host")); err != nil || !response.IsSuccess() {
 		panic("external rest API not available")
 	}
 
